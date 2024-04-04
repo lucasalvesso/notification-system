@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "directories": {
+    "test": "test",
+    "backend": "nodemon index.ts"
+  },
+  "scripts": {
+    "migration:create": "npx typeorm-ts-node-commonjs migration:create",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./ormconfig.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./ormconfig.ts",
+    "server": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5",
+    "tsyringe": "^4.8.0",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2"
+  }
+}
