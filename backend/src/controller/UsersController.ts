@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { autoInjectable } from "tsyringe";
 import { UsersService } from "../service/UsersService";
-import { CompareTypeWithRecord } from "../util/CompareTypeWithRecord";
 import { CategoriesEnum } from "../domain/CategoriesEnum";
 import { NotificationTypesEnum } from "../domain/NotificationTypesEnum";
 
@@ -11,7 +10,6 @@ export class UsersController {
 
   async getAll(req: Request, res: Response) {
     const query: Record<string, any> = req.query;
-    CompareTypeWithRecord<UserQuery>({} as UserQuery, query);
 
     const users = await this.service.getAll(query);
     res.json(users);
