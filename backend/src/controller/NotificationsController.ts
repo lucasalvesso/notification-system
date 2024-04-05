@@ -8,8 +8,7 @@ export class NotificationsController {
   constructor(private service: NotificationsService) {}
 
   async getAll(req: Request, res: Response) {
-    const query: Record<string, any> = req.query;
-    const users = await this.service.getAll(query);
+    const users = await this.service.getAll();
     res.json(users);
   }
 
@@ -18,11 +17,11 @@ export class NotificationsController {
 
     const errors: string[] = [];
 
-    if (typeof body.message !== "string") {
+    if (typeof body?.message !== "string") {
       errors.push("Invalid value for message");
     }
 
-    if (!CategoriesEnum[body.category]) {
+    if (!CategoriesEnum[body?.category]) {
       errors.push("Invalid value for category");
     }
 

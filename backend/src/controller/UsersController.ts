@@ -18,40 +18,48 @@ export class UsersController {
 
     const errors: string[] = [];
 
-    if (typeof body.name !== "string") {
-      errors.push("Invalid field for name");
+    if (typeof body?.name !== "string") {
+      errors.push("Invalid value for name");
     }
 
-    if (typeof body.email !== "string") {
-      errors.push("Invalid field for email");
+    if (typeof body?.email !== "string") {
+      errors.push("Invalid value for email");
     }
 
-    if (typeof body.phoneNumber !== "string") {
-      errors.push("Invalid field for phoneNumber");
+    if (typeof body?.phoneNumber !== "string") {
+      errors.push("Invalid value for phoneNumber");
     }
 
-    if (!Array.isArray(body.categories)) {
-      errors.push("Invalid field for categories");
-    }
-
-    const categoriesMatched = body.categories?.every(
-      (i: CategoriesEnum) => !!CategoriesEnum[i],
+    const validCategories = Object.keys(CategoriesEnum).filter(
+      (x) => !(parseInt(x) >= 0),
     );
 
-    if (!categoriesMatched) {
-      errors.push("Invalid values for categories");
+    if (Array.isArray(body?.categories)) {
+      const categoriesMatched = body?.categories?.every((i: string) =>
+        validCategories.includes(i),
+      );
+
+      if (!categoriesMatched) {
+        errors.push("Invalid value for categories");
+      }
+    } else {
+      errors.push("Invalid value for categories");
     }
 
-    if (!Array.isArray(body.notificationTypes)) {
-      errors.push("Invalid field for categories");
-    }
-
-    const notificationTypesMatched = body.notificationTypes?.every(
-      (i: NotificationTypesEnum) => !!NotificationTypesEnum[i],
+    const validTypes = Object.keys(NotificationTypesEnum).filter(
+      (x) => !(parseInt(x) >= 0),
     );
 
-    if (!notificationTypesMatched) {
-      errors.push("Invalid values for notificationTypes");
+    if (Array.isArray(body?.notificationTypes)) {
+      const notificationTypesMatched = body?.notificationTypes?.every(
+        (i: string) => validTypes.includes(i),
+      );
+
+      if (!notificationTypesMatched) {
+        errors.push("Invalid value for notificationTypes");
+      }
+    } else {
+      errors.push("Invalid value for notificationTypes");
     }
 
     if (errors.length) {
@@ -70,8 +78,4 @@ export class UsersController {
     await this.service.save(userData);
     res.status(201).json({ message: "user created successfully" });
   }
-}
-
-interface UserQuery {
-  name: string;
 }

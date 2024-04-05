@@ -8,11 +8,11 @@
     "backend": "nodemon index.ts"
   },
   "scripts": {
+    "test": "npx jest --config=jest.config.js",
     "migration:create": "npx typeorm-ts-node-commonjs migration:create",
     "migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./ormconfig.ts",
     "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./ormconfig.ts",
-    "server": "nodemon index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +29,11 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.4",
+    "jest": "^29.7.0",
     "prettier": "^3.2.5",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
   }
 }

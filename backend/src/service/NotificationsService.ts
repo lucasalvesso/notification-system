@@ -14,8 +14,8 @@ export class NotificationsService {
     private categoriesRepository: CategoriesRepository,
   ) {}
 
-  async getAll(query: Record<string, any>) {
-    return await this.notificationsRepository.getAll(query);
+  async getAll() {
+    return await this.notificationsRepository.getAll();
   }
 
   async send(body: ExpectedBody) {
@@ -46,10 +46,12 @@ export class NotificationsService {
           await this.notificationsRepository.save(notification);
         } catch (e) {
           notification.status = false;
-          await this.notificationsRepository.save(notification);
-          errors.push(
-            `notification ${type.name} not sent to user ${user.name}`,
-          );
+          const result = await this.notificationsRepository.save(notification);
+          if (!result) {
+            errors.push(
+              `notification ${type.name} not sent to user ${user.name}`,
+            );
+          }
         }
       }
     }

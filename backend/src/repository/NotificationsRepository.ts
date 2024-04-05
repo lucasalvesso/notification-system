@@ -6,7 +6,7 @@ import { injectable } from "tsyringe";
 export class NotificationsRepository {
   constructor(private database: Database) {}
 
-  async getAll(query: Record<string, any>) {
+  async getAll() {
     try {
       const manager = await this.database.getEntityManager();
       return await manager.find<NotificationsEntity>(NotificationsEntity, {
