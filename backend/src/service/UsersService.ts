@@ -10,8 +10,8 @@ import { NotificationTypesEntity } from "../entity/NotificationTypesEntity";
 export class UsersService {
   constructor(private repository: UsersRepository) {}
 
-  async getAll(query: Record<string, any>) {
-    return await this.repository.getAll(query);
+  async getAll() {
+    return await this.repository.getAll();
   }
 
   async save(body: ExpectedBody) {

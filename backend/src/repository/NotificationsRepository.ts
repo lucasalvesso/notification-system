@@ -11,6 +11,9 @@ export class NotificationsRepository {
       const manager = await this.database.getEntityManager();
       return await manager.find<NotificationsEntity>(NotificationsEntity, {
         relations: ["user", "type", "category"],
+        order: {
+          createdAt: "DESC",
+        },
       });
     } catch (e) {
       console.error(e);

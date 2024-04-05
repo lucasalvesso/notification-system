@@ -1,0 +1,36 @@
+.message-form {
+    font-family: Arial, sans-serif;
+    width: 80%;
+    margin: auto;
+}
+
+.message-form textarea,
+.message-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.message-form select {
+    height: 40px;
+}
+
+.message-form select {
+    background-color: #fff;
+}
+
+.message-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background-color: #45a049;
+}

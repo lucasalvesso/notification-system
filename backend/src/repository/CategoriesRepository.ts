@@ -19,4 +19,14 @@ export class CategoriesRepository {
       throw new Error("Database error");
     }
   }
+
+  async getAll() {
+    try {
+      const manager = await this.database.getEntityManager();
+      return await manager.find<CategoriesEntity>(CategoriesEntity);
+    } catch (e) {
+      console.error(e);
+      throw new Error("Database error");
+    }
+  }
 }

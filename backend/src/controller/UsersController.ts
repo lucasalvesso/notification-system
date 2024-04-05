@@ -9,9 +9,7 @@ export class UsersController {
   constructor(private service: UsersService) {}
 
   async getAll(req: Request, res: Response) {
-    const query: Record<string, any> = req.query;
-
-    const users = await this.service.getAll(query);
+    const users = await this.service.getAll();
     res.json(users);
   }
 

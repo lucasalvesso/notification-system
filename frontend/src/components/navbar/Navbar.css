@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.navbar-logo {
+    color: #fff;
+}
+
+.navbar-menu {
+    list-style-type: none;
+    display: flex;
+    width: 50%;
+    gap: 20px;
+}
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+}

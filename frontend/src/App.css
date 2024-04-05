@@ -1,0 +1,11 @@
+.app {
+  text-align: center;
+}
+
+.content{
+  background-color: #e7e7e7;
+  margin: 40px;
+  justify-content: center;
+  height: 700px;
+  overflow: scroll;
+}

@@ -6,32 +6,17 @@ import { UsersEntity } from "../entity/UsersEntity";
 export class UsersRepository {
   constructor(private database: Database) {}
 
-  async getAll(query: Record<string, any>) {
+  async getAll() {
     try {
       const manager = await this.database.getEntityManager();
       return await manager.find<UsersEntity>(UsersEntity, {
-        relations: ["categories", "notifications"],
+        relations: ["categories", "notificationTypes"],
       });
     } catch (e) {
       console.error(e);
       throw new Error("Database error");
     }
   }
-
-  // async getByCategoryName(name: string) {
-  //   try {
-  //     const manager = await this.database.getEntityManager();
-  //     return await manager.find<UsersEntity>(UsersEntity, {
-  //       relations: ["categories"],
-  //       where: {
-  //         categories: { name },
-  //       },
-  //     });
-  //   } catch (e) {
-  //     console.error(e);
-  //     throw new Error("Database error");
-  //   }
-  // }
 
   async save(entity: UsersEntity) {
     try {
