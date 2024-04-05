@@ -1,6 +1,5 @@
 export const SendData = async(path: string, method: 'POST', content: Record<string, any>) => {
     try {
-        debugger
         const response = await fetch(`http://localhost:3003/${path}`, {
             method: method,
             headers: {

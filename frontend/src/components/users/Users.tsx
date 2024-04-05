@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Table from "../Table";
+import Table from "../table/Table";
 import {FetchData} from "../../util/FetchData";
 import {UserData} from "../../interface/UserData";
 

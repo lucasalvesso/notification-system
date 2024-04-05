@@ -50,8 +50,6 @@ export class NotificationsService {
           errors.push(
             `notification ${type.name} not sent to user ${user.name}`,
           );
-        } finally {
-          console.log("Unable to save data");
         }
       }
     }

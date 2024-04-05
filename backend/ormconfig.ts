@@ -1,20 +1,14 @@
 import { DataSource } from "typeorm";
-
-// const config = {
-//   type: "postgres",
-//   cli: {
-//     entitiesDir: "src/entities",
-//     migrationsDir: "src/migrations",
-//   },
-// };
+import dotenv from "dotenv";
+dotenv.config({ path: "../.env" });
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "172.19.0.11",
-  port: 5432,
-  username: "postgres",
-  password: "postgres",
-  database: "postgres",
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   entities: ["src/entity/*.ts"],
   migrations: ["src/migrations/*.ts"],
 });

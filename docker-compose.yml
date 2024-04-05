@@ -3,14 +3,14 @@ services:
   postgres_notification:
     image: postgres:12
     environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
     ports:
-      - 5432:5432
+      - ${DB_PORT}:${DB_PORT}
     networks:
       notification_db:
-        ipv4_address: 172.19.0.11
+        ipv4_address: ${DB_HOST}
 
   postgres_pgadmin:
     image: dpage/pgadmin4
@@ -20,7 +20,7 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: "False"
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     ports:
-      - "16543:80"
+      - ${PGADMIN_PORT}:80
     depends_on:
       - postgres_notification
     networks:
